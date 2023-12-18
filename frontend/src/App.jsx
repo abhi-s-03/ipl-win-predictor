@@ -105,7 +105,7 @@ function App() {
       rrr: rrr,
     };
 
-    fetch("https://cric-qjas.onrender.com/predict", {
+    fetch("https://ipl-iolu.onrender.com/predict", {
       method: "POST",
       headers: {
         Accept: "application/json",
