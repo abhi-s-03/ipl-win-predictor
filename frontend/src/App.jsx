@@ -75,8 +75,7 @@ function App() {
     } else if (
       overs < 0 ||
       overs > 20 ||
-      overs % 1 !== 0 ||
-      (overs % 1 === 0 && overs % 1 > 0.6)
+      overs % 1 > 0.6
     ) {
       setError("Invalid overs");
       return;
@@ -104,6 +103,8 @@ function App() {
       crr: crr,
       rrr: rrr,
     };
+
+    console.log(data);
 
     fetch("https://ipl-iolu.onrender.com/predict", {
       method: "POST",
@@ -186,8 +187,11 @@ function App() {
           <label>Overs completed</label>
           <input
             type="number"
+            min="0"
+            max="20"
+            step="0.1"
             value={overs}
-            onChange={(e) => setOvers(parseInt(e.target.value))}
+            onChange={(e) => setOvers(parseFloat(e.target.value))}
           />
         </div>
       </div>
