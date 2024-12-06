@@ -1,1 +1,1 @@
-# Cricket-win-probability-predictor
+# ipl-win-predictor
