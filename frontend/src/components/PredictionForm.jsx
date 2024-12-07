@@ -154,18 +154,15 @@ export const PredictionForm = () => {
   return (
     <>
       {showError && (
-        <div
-          className={`fixed top-5 right-5 bg-red-500 text-white font-bold px-4 py-2 rounded-lg shadow-lg transition-opacity duration-1000 ${fadeOut ? "opacity-0" : "opacity-100"
-            }`}
-        >
+        <div className={`fixed top-4 right-4 left-4 md:left-auto md:right-5 bg-red-500 text-white font-bold px-4 py-2 rounded-lg shadow-lg z-50 transition-opacity duration-1000 ${fadeOut ? "opacity-0" : "opacity-100"}`}>
           {error}
         </div>
       )}
 
-      <div className="space-y-8">
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold mb-4">First Innings</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="space-y-6 md:space-y-8">
+        <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
+          <h2 className="text-lg md:text-xl font-semibold mb-4">First Innings</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
             <TeamSelect
               teams={teams}
               value={bowlingTeam}
@@ -205,9 +202,9 @@ export const PredictionForm = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold mb-4">Second Innings</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-white rounded-lg shadow-md p-4 md:p-6">
+          <h2 className="text-lg md:text-xl font-semibold mb-4">Second Innings</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
             <TeamSelect
               teams={teams}
               value={battingTeam}
@@ -216,6 +213,14 @@ export const PredictionForm = () => {
               label="Team"
             />
 
+            <OversInput
+              label="Overs Completed"
+              min="0"
+              max="20"
+              step="0.1"
+              value={overs}
+              onChange={(e) => setOvers(parseFloat(e.target.value))}
+            />
             <NumberInput
               label="Current Score"
               value={score}
@@ -230,24 +235,15 @@ export const PredictionForm = () => {
               min={0}
               max={10}
             />
-
-            <OversInput
-              label="Overs Completed"
-              min="0"
-              max="20"
-              step="0.1"
-              value={overs}
-              onChange={(e) => setOvers(parseFloat(e.target.value))}
-            />
           </div>
         </div>
 
-        <div className="flex justify-center space-x-4">
+        <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
           <button
             type="submit"
             disabled={isLoading}
             onClick={predictProbability}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium flex items-center space-x-2 transition-colors disabled:opacity-50"
+            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium flex items-center justify-center space-x-2 transition-colors disabled:opacity-50"
           >
             {isLoading ? (
               <>
@@ -265,7 +261,7 @@ export const PredictionForm = () => {
           <button
             type="button"
             onClick={handleReset}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium flex items-center space-x-2 transition-colors"
+            className="w-full sm:w-auto bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium flex items-center justify-center space-x-2 transition-colors"
           >
             <RotateCcw className="w-5 h-5" />
             <span>Reset</span>
@@ -276,13 +272,13 @@ export const PredictionForm = () => {
             ref={predictionRef}
             className="text-center space-y-4 mt-6"
           >
-            <h2 className="text-xl font-semibold">
+            <h2 className="text-base md:text-xl font-semibold">
               {battingTeam} -{" "}
               <span className={getProbabilityColor(battingProb)}>
                 {Math.round(battingProb * 100)}%
               </span>
             </h2>
-            <h2 className="text-xl font-semibold">
+            <h2 className="text-base md:text-xl font-semibold">
               {bowlingTeam} -{" "}
               <span className={getProbabilityColor(bowlingProb)}>
                 {Math.round(bowlingProb * 100)}%
