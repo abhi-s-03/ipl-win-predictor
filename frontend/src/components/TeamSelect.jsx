@@ -9,7 +9,7 @@ export const TeamSelect = ({ teams, value, onChange, excludeTeam, label }) => {
       <select
         value={value}
         onChange={(e) => onChange(e)}
-        className="w-full py-1text-sm rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        className="w-full text-sm rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
       >
         <option value="">Select team</option>
         {filteredTeams.map((team) => (

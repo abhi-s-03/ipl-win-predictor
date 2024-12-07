@@ -16,7 +16,7 @@ export const NumberInput = ({
         min={min}
         max={max}
         step={step}
-        className="w-full py-1 text-sm rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        className="w-full text-sm rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
       />
     </div>
   );
